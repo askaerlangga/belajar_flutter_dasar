@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'font_style.dart';
 
 void main() {
   runApp(const MyApps());
@@ -24,15 +25,16 @@ class MyApps extends StatelessWidget {
         body: SafeArea(
           child: Container(
             // margin: EdgeInsets.all(20),
-            margin: EdgeInsets.only(left: 10, right: 10),
+            margin: const EdgeInsets.only(left: 10, right: 10),
             // padding: EdgeInsets.all(20),
             child: Column(
-              children: const <Widget>[
-                Image(
+              children: <Widget>[
+                const Image(
                   image: AssetImage('assets/images/lambang_pdip.jpg'),
+                  
                 ),
-                Text('Kepak sayap kebhinekaan'),
-                Text('TENG TENG TENG'),
+                Text('Kepak sayap kebhinekaan', style: mainHeader),
+                Text('TENG TENG TENG', style: subHeader),
               ],
             ),
           ))));
