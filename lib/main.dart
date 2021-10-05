@@ -25,25 +25,30 @@ class MyApps extends StatelessWidget {
         body: SafeArea(
           child: Container(
             // margin: EdgeInsets.all(20),
-            margin: const EdgeInsets.only(left: 10, right: 10),
+            margin: const EdgeInsets.all(0),
             // padding: EdgeInsets.all(20),
             child: Column(
               children: <Widget>[
                 const Image(
                   image: AssetImage('assets/images/lambang_pdip.jpg'),
-                  
                 ),
-                Text('Kepak sayap kebhinekaan',
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text('Kepak sayap kebhinekaan',
                     style: mainHeader,
                     // textAlign: TextAlign.center,
+                  ),
                 ),
                 Text(
                   'TENG TENG TENG',
                   style: subHeader
-                ),
-                Text(
+                  ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20, right: 10, left: 10),
+                  child: Text(
                   'Teng teng teng teng teng, \nCoblos gambar banteng. Teng teng teng teng teng, Coblos gambar banteng.',
                   textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),
