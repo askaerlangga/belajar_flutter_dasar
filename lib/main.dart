@@ -20,19 +20,18 @@ class MyApps extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Belajar Flutter Dasar'),
           backgroundColor: Colors.red,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.mail),
-              onPressed: () {},
-              color: Colors.white,
-              )
-          ],
           ),
-        body: const SafeArea(
-          child: Image(
-            image: AssetImage('assets/images/lambang_pdip.jpg'),
-            // height: 200,
+        body: SafeArea(
+          child: Container(
+            child: Column(
+              children: const <Widget>[
+                Image(
+                  image: AssetImage('assets/images/lambang_pdip.jpg'),
+                ),
+                Text('Kepak sayap kebhinekaan'),
+                Text('TENG TENG TENG'),
+              ],
             ),
-        )));
+          ))));
   }
 }
