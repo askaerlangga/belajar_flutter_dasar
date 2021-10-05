@@ -28,6 +28,7 @@ class MyApps extends StatelessWidget {
             margin: const EdgeInsets.all(0),
             // padding: EdgeInsets.all(20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Image(
                   image: AssetImage('assets/images/lambang_pdip.jpg'),
