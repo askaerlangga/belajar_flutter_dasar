@@ -19,9 +19,9 @@ class MyApps extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Belajar Flutter Dasar'),
-          // backgroundColor: Colors.green,
+          backgroundColor: Colors.orange,
           actions: const <Widget>[
-            Icon(Icons.mail),
+            IconButton(onPressed: null, icon: Icon(Icons.mail)),
           ],
           ),
         body: const SafeArea(
