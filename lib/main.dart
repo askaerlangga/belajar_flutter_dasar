@@ -33,8 +33,18 @@ class MyApps extends StatelessWidget {
                   image: AssetImage('assets/images/lambang_pdip.jpg'),
                   
                 ),
-                Text('Kepak sayap kebhinekaan', style: mainHeader),
-                Text('TENG TENG TENG', style: subHeader),
+                Text('Kepak sayap kebhinekaan',
+                    style: mainHeader,
+                    // textAlign: TextAlign.center,
+                ),
+                Text(
+                  'TENG TENG TENG',
+                  style: subHeader
+                ),
+                Text(
+                  'Teng teng teng teng teng, \nCoblos gambar banteng. Teng teng teng teng teng, Coblos gambar banteng.',
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
           ))));
