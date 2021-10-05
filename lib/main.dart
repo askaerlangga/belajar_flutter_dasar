@@ -19,15 +19,20 @@ class MyApps extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Belajar Flutter Dasar'),
-          backgroundColor: Colors.orange,
-          actions: const <Widget>[
-            IconButton(onPressed: null, icon: Icon(Icons.mail)),
+          backgroundColor: Colors.red,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.mail),
+              onPressed: () {},
+              color: Colors.white,
+              )
           ],
           ),
         body: const SafeArea(
-          child: Text('Belajar Dart Dasar')
-        )
-      )
-    );
+          child: Image(
+            image: AssetImage('assets/images/lambang_pdip.jpg'),
+            // height: 200,
+            ),
+        )));
   }
 }
