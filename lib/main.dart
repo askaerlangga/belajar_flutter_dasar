@@ -5,29 +5,53 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({ Key? key }) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int angka = 0;
+  void tekanTombol(){
+    //Mengubah tampilan menjadi state saat ini
+    setState(() {
+      angka += 1;
+    });
+  }
+  void tekanTombolReset(){
+    setState(() {
+      angka = 0;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Latihan Container')),
-        body: Container(
-          color: Colors.red,
-          margin: EdgeInsets.all(10),
-          child: Container(
-            margin: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[Colors.yellow,Colors.blue,
-              ])),
+        appBar: AppBar(title: Text('Stateful Widget')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                angka.toString(),
+                style: TextStyle(fontSize: 10 + angka.toDouble()),
+              ),
+              MaterialButton(
+                onPressed: tekanTombol,
+                child: Text('Tambah Bilangan'),
+                color: Colors.yellow,
+              ),
+              MaterialButton(
+                onPressed: tekanTombolReset,
+                child: Text('Reset'),
+                color: Colors.red,
+              ),
+            ],
           ),
         ),
-      )
+      ),
     );
   }
 }
