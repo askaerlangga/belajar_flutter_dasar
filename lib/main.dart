@@ -4,37 +4,33 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
-
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  String pesan = 'Ini adalah Pesan';
+class MyApp extends StatelessWidget {
+  const MyApp({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Anonymous Method')),
+        appBar: AppBar(title: Text('Latihan Text Style')),
         body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(pesan),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  pesan = 'Tombol ditekan';
-                });
-              },
-              child: Text('Tekan Saya'),
-            )
-          ],
-        )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Text(
+                'Ini adalah Text',
+                style: TextStyle(
+                  fontFamily: 'Blogger',
+                  fontSize: 20,
+                  color: Colors.red,
+                  decoration: TextDecoration.overline,
+                  decorationColor: Colors.green,
+                  decorationThickness: 5,
+                  decorationStyle: TextDecorationStyle.wavy
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
