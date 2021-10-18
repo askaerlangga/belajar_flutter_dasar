@@ -1,4 +1,3 @@
-import 'package:belajar_flutter_dasar/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +10,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('AppBar Example', style: TextStyle(color: Colors.white)),
+          leading: Icon(Icons.adb, color: Colors.white),
+          actions: <Widget>[
+            IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app)),
+          ],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xff0096ff), Color(0xff6610f2)],
+                begin: FractionalOffset.topLeft,
+                end: FractionalOffset.bottomRight,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
