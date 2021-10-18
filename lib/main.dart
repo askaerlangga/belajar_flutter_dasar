@@ -3,32 +3,37 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('AppBar Example', style: TextStyle(color: Colors.white)),
-          leading: Icon(Icons.adb, color: Colors.white),
-          actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app)),
-          ],
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xff0096ff), Color(0xff6610f2)],
-                begin: FractionalOffset.topLeft,
-                end: FractionalOffset.bottomRight,
-              ),
-            ),
+        backgroundColor: Colors.red,
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: ListView(
+            children: <Widget>[
+              buildCard(Icons.adb, 'Android'),
+              buildCard(Icons.account_box, 'Account Box'),
+            ],
           ),
-        ),
+        )
       ),
     );
+  }
+
+  Card buildCard(IconData iconData, String text) {
+    return Card(
+              elevation: 5,
+              child: Row(
+                children: <Widget>[
+                  Container(margin: EdgeInsets.all(5)),
+                  Icon(iconData, color: Colors.red),
+                  Text(text),
+                ],
+              ),
+            );
   }
 }
