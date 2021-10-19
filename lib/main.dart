@@ -31,7 +31,27 @@ class MyApp extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
               ),
-              Container(),
+
+              // Custom Button
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.purple],
+                      begin: FractionalOffset.topLeft,
+                      end: FractionalOffset.bottomRight),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: 140,
+                height: 40,
+                // color: Colors.yellow,
+                child: MaterialButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Custom Button',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
