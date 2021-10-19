@@ -27,8 +27,14 @@ class _MyAppState extends State<MyApp> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextField(
+              decoration: InputDecoration(
+                // icon: Icon(Icons.person),
+                prefixIcon: Icon(Icons.person),
+                hintText: 'Username',
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
+              ),
               // obscureText: true,
-              maxLength: 10,
+              // maxLength: 10,
               onChanged: (value) {
                 setState(() {});
               },
