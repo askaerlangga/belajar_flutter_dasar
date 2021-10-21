@@ -41,6 +41,52 @@ class MainPage extends StatelessWidget {
                                   'https://images.unsplash.com/photo-1633882228840-e847b7694baf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80'),
                               fit: BoxFit.cover)),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 20.0,
+                          top: 50 + MediaQuery.of(context).size.height * 0.35,
+                          right: 20.0,
+                          bottom: 20.0),
+                      child: Center(
+                        child: Column(
+                          children: <Widget>[
+                            Text('Halo Selamat Datang di Aplikasiku',
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.redAccent),
+                                maxLines: 2,
+                                textAlign: TextAlign.center),
+                            Container(
+                              margin: EdgeInsets.only(top: 20.0, bottom: 15.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text('Posted on ',
+                                      style: TextStyle(color: Colors.grey)),
+                                  Text('21 Oktober 2021',
+                                      style:
+                                          TextStyle(color: Colors.redAccent)),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Spacer(flex: 10),
+                                Icon(Icons.thumb_up,
+                                    size: 18, color: Colors.grey),
+                                Spacer(flex: 1),
+                                Text('20'),
+                                Spacer(flex: 5),
+                                Icon(Icons.comment,
+                                    size: 18, color: Colors.grey),
+                                Spacer(flex: 1),
+                                Text('10'),
+                                Spacer(flex: 10),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
