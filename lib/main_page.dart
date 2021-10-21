@@ -44,12 +44,19 @@ class MainPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(
                           left: 20.0,
+<<<<<<< HEAD
                           top: MediaQuery.of(context).size.height * 0.35,
+=======
+                          top: 50 + MediaQuery.of(context).size.height * 0.35,
+>>>>>>> 6696239dc91863fb559be5d1731df36785b9ab76
                           right: 20.0,
                           bottom: 20.0),
                       child: Center(
                         child: Column(
+<<<<<<< HEAD
                           mainAxisAlignment: MainAxisAlignment.center,
+=======
+>>>>>>> 6696239dc91863fb559be5d1731df36785b9ab76
                           children: <Widget>[
                             Text('Halo Selamat Datang di Aplikasiku',
                                 style: TextStyle(
