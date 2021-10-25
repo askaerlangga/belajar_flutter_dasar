@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                     child: Column(children: <Widget>[
                       TextField(
                         decoration: InputDecoration(
-                          hintText: 'Email',
+                            hintText: 'Email',
                             prefixIcon: Icon(Icons.email, color: Colors.blue),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.grey))),
@@ -71,26 +71,46 @@ class HomePage extends StatelessWidget {
                       TextField(
                         obscureText: true,
                         decoration: InputDecoration(
-                          hintText: 'Password',
+                            hintText: 'Password',
                             prefixIcon: Icon(Icons.lock, color: Colors.blue),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.grey))),
                       ),
-                      
                     ])),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        margin: EdgeInsets.only(right: 20, bottom: 20),
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                            color: Colors.blue,
-                          ),
-                          
-                        ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    margin: EdgeInsets.only(right: 20, bottom: 20),
+                    child: Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                        color: Colors.blue,
                       ),
                     ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(20, 0, 20, 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: () {},
+                            child: Text('SIGN IN', style: TextStyle(color: Colors.white)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          ),
+                        ),
+                      ),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.facebook)),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.share))
+                    ],
+                  ),
+                )
               ],
             ),
           )
