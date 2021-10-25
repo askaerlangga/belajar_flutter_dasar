@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(right: 20, bottom: 20),
                     child: Text(
-                      'Forgot Password',
+                      'FORGOT PASSWORD?',
                       style: TextStyle(
                         color: Colors.blue,
                       ),
@@ -101,16 +101,29 @@ class HomePage extends StatelessWidget {
                           child: MaterialButton(
                             color: Colors.blue,
                             onPressed: () {},
-                            child: Text('SIGN IN', style: TextStyle(color: Colors.white)),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                            child: Text('SIGN IN',
+                                style: TextStyle(color: Colors.white)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
                           ),
                         ),
                       ),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.facebook)),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.share))
+                      IconButton(onPressed: () {}, icon: Icon(Icons.facebook)),
+                      IconButton(onPressed: () {}, icon: Icon(Icons.share))
                     ],
                   ),
-                )
+                ),
+                Container(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('DONT HAVE AN ACCOUNT? '),
+                    Text(
+                      'SIGN UP',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
+                )),
               ],
             ),
           )
