@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:belajar_flutter_dasar/model/person.dart';
+import 'package:belajar_flutter_dasar/model/album.dart';
 import 'package:http/http.dart' as http;
 
 class PostData {
@@ -11,7 +11,7 @@ class PostData {
       final response =
           await http.post(Uri.parse(urlAPI), body: {'title': title});
       if (response.statusCode == 201) {
-        return Person.fromJson(jsonDecode(response.body));
+        return Album.fromJson(jsonDecode(response.body));
       } else {
         throw Exception('Failed to create data.');
       }
