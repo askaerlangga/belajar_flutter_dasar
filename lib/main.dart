@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,45 +11,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Latihan TabBar'),
-            bottom: const TabBar(
-                indicator: BoxDecoration(color: Colors.red),
-                // indicatorSize: TabBarIndicatorSize.label,
-                // indicatorWeight: 50,
-                indicatorColor: Colors.purple,
-                // indicatorPadding: EdgeInsets.all(10),
-                labelColor: Colors.yellow,
-                unselectedLabelColor: Colors.yellow,
-                tabs: [
-                  Tab(
-                    icon: Icon(Icons.home),
-                    text: 'Home',
-                  ),
-                  Tab(
-                    icon: Icon(Icons.chat),
-                    text: 'Chat',
-                  ),
-                  Tab(
-                    icon: Icon(Icons.call),
-                    text: 'Call',
-                  )
-                ]),
-          ),
-          body: const TabBarView(children: [
-            Center(
-              child: Text('Tab 1'),
+      home: Scaffold(
+        appBar: AppBar(title: Text('Latihan QR Flutter')),
+        body: Container(
+          color: Colors.black,
+          child: Center(
+              child: Container(
+            margin: EdgeInsets.all(20),
+            child: QrImage(
+              errorCorrectionLevel: QrErrorCorrectLevel.M,
+              embeddedImage: NetworkImage(
+                  'https://avatars.githubusercontent.com/u/36721875?v=4'),
+              version: 4,
+              data: 'Aska Erlangga',
+              backgroundColor: Colors.white,
+              padding: EdgeInsets.all(20),
             ),
-            Center(
-              child: Text('Tab 2'),
-            ),
-            Center(
-              child: Text('Tab 3'),
-            )
-          ]),
+          )),
         ),
       ),
     );
