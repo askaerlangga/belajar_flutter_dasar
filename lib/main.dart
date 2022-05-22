@@ -15,20 +15,28 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Latihan TabBar'),
-            bottom: const TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-                text: 'Home',
-              ),
-              Tab(
-                icon: Icon(Icons.chat),
-                text: 'Chat',
-              ),
-              Tab(
-                icon: Icon(Icons.call),
-                text: 'Call',
-              )
-            ]),
+            bottom: const TabBar(
+                indicator: BoxDecoration(color: Colors.red),
+                // indicatorSize: TabBarIndicatorSize.label,
+                // indicatorWeight: 50,
+                indicatorColor: Colors.purple,
+                // indicatorPadding: EdgeInsets.all(10),
+                labelColor: Colors.yellow,
+                unselectedLabelColor: Colors.yellow,
+                tabs: [
+                  Tab(
+                    icon: Icon(Icons.home),
+                    text: 'Home',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.chat),
+                    text: 'Chat',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.call),
+                    text: 'Call',
+                  )
+                ]),
           ),
           body: const TabBarView(children: [
             Center(
