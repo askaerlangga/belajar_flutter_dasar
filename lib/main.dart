@@ -1,5 +1,6 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:qrscan/qrscan.dart' as scanner;
 
 void main() {
   runApp(const MyApp());
@@ -13,26 +14,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String? text;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Play Sound'),
+          title: Text('Font Feature'),
         ),
         body: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(text.toString()),
-                ElevatedButton(
-                    onPressed: () async {
-                      text = await scanner.scan();
-                      setState(() {});
-                    },
-                    child: Text('Scanner'))
+                Text(
+                  'Text Panjang Awikwok',
+                  style: TextStyle(fontFeatures: [
+                    // https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
+                    FontFeature.enable('frac'),
+                    FontFeature.enable('smcp')
+                  ]),
+                )
               ]),
         ),
       ),
