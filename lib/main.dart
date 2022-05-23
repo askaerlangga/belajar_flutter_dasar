@@ -26,71 +26,68 @@ class _MyAppState extends State<MyApp> {
           title: const Text('HTTP Request'),
         ),
         body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: NetworkImage(person.avatar ??
-                              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'),
-                          fit: BoxFit.cover)),
+                Text(
+                  'ID : ',
+                  style: TextStyle(fontSize: 20),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'ID : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      person.id ?? 'Belum ada data : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
+                Text(
+                  person.id ?? 'Belum ada data : ',
+                  style: TextStyle(fontSize: 20),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Name : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      (person.firstName != null || person.lastName != null)
-                          ? '${person.firstName} ${person.lastName}'
-                          : 'Belum ada data : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Name : ',
+                  style: TextStyle(fontSize: 20),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Email : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      person.email ?? 'Belum ada data : ',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
+                Text(
+                  person.name ?? 'Belum ada data : ',
+                  style: TextStyle(fontSize: 20),
                 ),
-                ElevatedButton(
-                    onPressed: () async {
-                      await repository
-                          .getData(1 + Random().nextInt(10))
-                          .then((value) {
-                        person = value;
-                        setState(() {});
-                      });
-                    },
-                    child: Text('Get Data'))
-              ]),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Job : ',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  person.job ?? 'Belum ada data : ',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'CreatedAt : ',
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  person.createdAt ?? 'Belum ada data : ',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  await repository.postData('Aska', 'Mahasiswa').then((value) {
+                    person = value;
+                    setState(() {});
+                  });
+                },
+                child: Text('POST Data'))
+          ]),
         ),
       ),
     );

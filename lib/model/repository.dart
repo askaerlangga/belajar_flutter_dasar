@@ -1,22 +1,25 @@
 import 'dart:convert';
 
 import 'package:belajar_flutter_dasar/model/person.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Repository {
   final url = 'https://reqres.in/api/users';
-  Future getData(int id) async {
+  Future postData(String name, String job) async {
     try {
-      final response = await http.get(Uri.parse('$url/$id'));
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body)['data'];
-        return Person.fromJson(data);
+      final response =
+          await http.post(Uri.parse(url), body: {'name': name, 'job': job});
+      if (response.statusCode == 201) {
+        // If the server did return a 201 CREATED response,
+        // then parse the JSON.
+        return Person.fromJson(jsonDecode(response.body));
       } else {
-        throw Exception('Failed to load data');
+        // If the server did not return a 201 CREATED response,
+        // then throw an exception.
+        throw Exception('Failed to create data.');
       }
     } catch (e) {
-      return e.toString();
+      e.toString();
     }
   }
 }
