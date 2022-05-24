@@ -1,4 +1,5 @@
-import 'package:belajar_flutter_dasar/application_color.dart';
+import 'package:belajar_flutter_dasar/cart.dart';
+import 'package:belajar_flutter_dasar/money.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,44 +13,79 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ChangeNotifierProvider<ApplicationColor>(
-        create: (context) => ApplicationColor(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<Money>(create: (context) => Money()),
+          ChangeNotifierProvider<Cart>(create: (context) => Cart())
+        ],
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.black,
-            title: Consumer<ApplicationColor>(
-                builder: (context, applicationColor, _) => Text(
-                      'Provider State Management',
-                      style: TextStyle(color: applicationColor.color),
-                    )),
+          floatingActionButton: Consumer<Money>(
+            builder: (context, money, _) => Consumer<Cart>(
+              builder: (context, cart, _) => FloatingActionButton(
+                onPressed: () {
+                  if (money.balance >= 500) {
+                    cart.quantity += 1;
+                    money.balance -= 500;
+                  }
+                },
+                child: Icon(Icons.add),
+              ),
+            ),
           ),
+          appBar: AppBar(title: Text('Multi Provider')),
           body: Center(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Consumer<ApplicationColor>(
-                builder: (context, applicationColor, _) => AnimatedContainer(
-                  duration: Duration(milliseconds: 500),
-                  margin: EdgeInsets.all(5),
-                  width: 100,
-                  height: 100,
-                  color: applicationColor.color,
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Balace'),
+                    Container(
+                        padding: EdgeInsets.all(5),
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration(border: Border.all()),
+                        width: 150,
+                        height: 40,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Consumer<Money>(
+                            builder: (context, money, _) => Text(
+                              money.balance.toString(),
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )),
+                  ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('AB'),
-                  Consumer<ApplicationColor>(
-                      builder: (context, applicationColor, _) => Switch(
-                          activeColor: applicationColor.color,
-                          inactiveThumbColor: applicationColor.color,
-                          value: applicationColor.isLightBlue,
-                          onChanged: (value) {
-                            applicationColor.isLightBlue = value;
-                          })),
-                  Text('LB')
-                ],
-              )
+              Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(border: Border.all()),
+                  width: 300,
+                  height: 40,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Consumer<Cart>(
+                      builder: (context, cart, _) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Apel (500) x ${cart.quantity}',
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            (500 * cart.quantity).toString(),
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ))
             ]),
           ),
         ),
