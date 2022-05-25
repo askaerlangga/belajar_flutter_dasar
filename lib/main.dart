@@ -1,94 +1,61 @@
-import 'package:belajar_flutter_dasar/cart.dart';
-import 'package:belajar_flutter_dasar/money.dart';
+import 'package:belajar_flutter_dasar/color_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
+
+  ColorBloc bloc = ColorBloc();
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider<Money>(create: (context) => Money()),
-          ChangeNotifierProvider<Cart>(create: (context) => Cart())
-        ],
-        child: Scaffold(
-          floatingActionButton: Consumer<Money>(
-            builder: (context, money, _) => Consumer<Cart>(
-              builder: (context, cart, _) => FloatingActionButton(
-                onPressed: () {
-                  if (money.balance >= 500) {
-                    cart.quantity += 1;
-                    money.balance -= 500;
-                  }
-                },
-                child: Icon(Icons.add),
-              ),
-            ),
+      home: Scaffold(
+        floatingActionButton:
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+          FloatingActionButton(
+              backgroundColor: Colors.amber,
+              onPressed: () {
+                bloc.eventSink.add(ColorEvent.to_amber);
+              }),
+          SizedBox(
+            width: 10,
           ),
-          appBar: AppBar(title: Text('Multi Provider')),
-          body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Balace'),
-                    Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.all(5),
-                        decoration: BoxDecoration(border: Border.all()),
-                        width: 150,
-                        height: 40,
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Consumer<Money>(
-                            builder: (context, money, _) => Text(
-                              money.balance.toString(),
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )),
-                  ],
-                ),
-              ),
-              Container(
-                  margin: EdgeInsets.all(5),
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(border: Border.all()),
-                  width: 300,
-                  height: 40,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Consumer<Cart>(
-                      builder: (context, cart, _) => Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Apel (500) x ${cart.quantity}',
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            (500 * cart.quantity).toString(),
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
-            ]),
-          ),
+          FloatingActionButton(
+              backgroundColor: Colors.blue,
+              onPressed: () {
+                bloc.eventSink.add(ColorEvent.to_blue);
+              })
+        ]),
+        appBar: AppBar(
+          title: Text('Bloc State Management'),
         ),
+        body: Center(
+            child: StreamBuilder(
+          stream: bloc.stateStream,
+          initialData: Colors.amber,
+          builder: (context, AsyncSnapshot<Color> snapshot) {
+            return AnimatedContainer(
+              width: 100,
+              height: 100,
+              color: snapshot.data,
+              duration: Duration(milliseconds: 500),
+            );
+          },
+        )),
       ),
     );
   }
