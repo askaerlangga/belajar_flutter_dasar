@@ -12,6 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<bool> _isSelected = [true, false, false];
+  String _text = 'Play';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,12 +25,33 @@ class _MyAppState extends State<MyApp> {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Ini adalah text Biasa'),
-            SizedBox(
-              height: 10,
+            Text('$_text'),
+            ToggleButtons(
+              children: <Widget>[
+                Icon(Icons.play_arrow),
+                Icon(Icons.pause),
+                Icon(Icons.stop)
+              ],
+              isSelected: _isSelected,
+              onPressed: (index) {
+                setState(() {
+                  for (int i = 0; i < _isSelected.length; i++) {
+                    if (i == index) {
+                      _isSelected[i] = true;
+                      (_isSelected[0])
+                          ? _text = 'Play'
+                          : (_isSelected[1])
+                              ? _text = 'Pause'
+                              : _text = 'Stop';
+                    } else {
+                      _isSelected[i] = false;
+                    }
+                  }
+
+                  // isSelected[index] = !isSelected[index];
+                });
+              },
             ),
-            SelectableText(
-                'Ini adalah Selectable Text, silahkan tekan dan tahan'),
           ],
         )),
       ),
