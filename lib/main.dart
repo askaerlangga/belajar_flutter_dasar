@@ -1,76 +1,51 @@
 import 'dart:async';
 
+import 'package:belajar_flutter_dasar/progress_bar.dart';
+import 'package:belajar_flutter_dasar/time_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int counter = 0;
-  bool isBlack = true;
-  bool isStop = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Timer Demo'),
+          title: Text('Custom Progress Bar'),
         ),
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
-              '$counter',
-              style: TextStyle(
-                  color: (isBlack) ? Colors.black : Colors.red,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold),
+          child: ChangeNotifierProvider(
+            create: (context) => TimeState(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Consumer<TimeState>(
+                  builder: (context, timeState, _) => CustomProgressBar(
+                    200,
+                    timeState.time,
+                    15,
+                  ),
+                ),
+                Consumer<TimeState>(
+                    builder: (context, timeState, _) => ElevatedButton(
+                        onPressed: () {
+                          Timer.periodic(Duration(seconds: 1), (timer) {
+                            (timeState.time == 0)
+                                ? timer.cancel()
+                                : timeState.time -= 1;
+                          });
+                        },
+                        child: Text('Start')))
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Timer(Duration(seconds: 5), () {
-                    setState(() {
-                      isBlack = false;
-                    });
-                  });
-                },
-                child: Text('Ubah Warna 5 detik kemudian')),
-            ElevatedButton(
-                onPressed: () {
-                  Timer.run(() {
-                    setState(() {
-                      isBlack = false;
-                    });
-                  });
-                },
-                child: Text('Ubah Warna secara langsung')),
-            ElevatedButton(
-                onPressed: () {
-                  isStop = false;
-                  counter = 0;
-                  Timer.periodic(Duration(seconds: 1), (timer) {
-                    if (isStop) {
-                      timer.cancel();
-                    }
-                    setState(() {
-                      counter++;
-                    });
-                  });
-                },
-                child: Text('Start Timer')),
-            ElevatedButton(
-                onPressed: () {
-                  isStop = true;
-                },
-                child: Text('Stop Timer'))
-          ]),
+          ),
         ),
       ),
     );
