@@ -1,3 +1,4 @@
+import 'package:belajar_flutter_dasar/prodi.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,48 +13,46 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<bool> _isSelected = [true, false, false];
-  String _text = 'Play';
+  Prodi? dropDownValue;
+  List<Prodi> prodi = [
+    Prodi('Teknik Informatika'),
+    Prodi('Sistem Informasi'),
+    Prodi('Pendidikan Bahasa Inggris')
+  ];
+  List<DropdownMenuItem<Prodi>> generateItems1(List<Prodi> prodi) {
+    List<DropdownMenuItem<Prodi>> items = [];
+    for (var value in prodi) {
+      items.add(DropdownMenuItem(
+        child: Text(value.name),
+        value: value,
+      ));
+    }
+    return items;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Judul Aplikasi'),
+          title: Text('Dropdown Button'),
         ),
         body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('$_text'),
-            ToggleButtons(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.play_arrow),
-                Icon(Icons.pause),
-                Icon(Icons.stop)
-              ],
-              isSelected: _isSelected,
-              onPressed: (index) {
-                setState(() {
-                  for (int i = 0; i < _isSelected.length; i++) {
-                    if (i == index) {
-                      _isSelected[i] = true;
-                      (_isSelected[0])
-                          ? _text = 'Play'
-                          : (_isSelected[1])
-                              ? _text = 'Pause'
-                              : _text = 'Stop';
-                    } else {
-                      _isSelected[i] = false;
-                    }
-                  }
-
-                  // isSelected[index] = !isSelected[index];
-                });
-              },
-            ),
-          ],
-        )),
+                DropdownButton<Prodi>(
+                  hint: Text('Prodi'),
+                  value: dropDownValue,
+                  onChanged: (value) {
+                    setState(() {
+                      dropDownValue = value;
+                    });
+                  },
+                  items: generateItems1(prodi),
+                ),
+              ]),
+        ),
       ),
     );
   }
