@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            GetX<PersonController>(
+            GetBuilder<PersonController>(
                 init: PersonController(),
                 builder: ((controller) => Text(
                       controller.person.value.name.toString(),

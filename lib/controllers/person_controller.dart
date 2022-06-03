@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 class PersonController extends GetxController {
   var person = Person().obs;
   void changeUpperCase() {
-    person.update((val) {
-      person.value.name = person.value.name.toString().toUpperCase();
-    });
+    person.value.name = person.value.name.toString().toUpperCase();
+    update();
   }
 }
