@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             GetBuilder<PersonController>(
                 init: PersonController(),
                 builder: ((controller) => Text(
-                      controller.person.value.name.toString(),
+                      controller.person.name,
                       style: const TextStyle(fontSize: 20),
                     ))),
             ElevatedButton(
