@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-  final person = Get.put(PersonController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +14,15 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Obx(() => Text(
-                  person.person.value.name,
-                  style: TextStyle(fontSize: 20),
-                )),
+            GetX<PersonController>(
+                init: PersonController(),
+                builder: ((controller) => Text(
+                      controller.person.value.name.toString(),
+                      style: const TextStyle(fontSize: 20),
+                    ))),
             ElevatedButton(
                 onPressed: () {
-                  person.changeUpperCase();
+                  Get.find<PersonController>().changeUpperCase();
                 },
                 child: Text('Change'))
           ],
