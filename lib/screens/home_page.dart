@@ -1,10 +1,10 @@
-import 'package:belajar_flutter_dasar/controllers/counter_controller.dart';
+import 'package:belajar_flutter_dasar/controllers/person_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-  final counter = Get.find<CounterController>();
+  final person = Get.put(PersonController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,30 +14,16 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(
-              () => Text(
-                'ANGKA ${counter.counter}',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
+            Obx(() => Text(
+                  person.person.value.name,
+                  style: TextStyle(fontSize: 20),
+                )),
             ElevatedButton(
                 onPressed: () {
-                  counter.increment();
+                  person.changeUpperCase();
                 },
-                child: const Text('Counter++')),
-            ElevatedButton(
-                onPressed: () {
-                  counter.decrement();
-                },
-                child: const Text('Counter--')),
-            ElevatedButton(
-                onPressed: () {
-                  counter.changeTheme();
-                },
-                child: const Text('Change Theme'))
+                child: Text('Change'))
           ],
         ),
       ),
