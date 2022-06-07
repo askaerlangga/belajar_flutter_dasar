@@ -12,19 +12,47 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Show Dialog'),
-          onPressed: () async {
-            Get.defaultDialog(
-                // Klik background tidak close
-                barrierDismissible: false,
-                title: 'Error',
-                middleText: 'Tidak ada koneksi internet',
-                // textCancel: 'Cancel',
-                cancel: ElevatedButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text('Ok')));
+          child: const Text('Show Bottom Sheet'),
+          onPressed: () {
+            Get.bottomSheet(
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Masukan data',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                filled: true, fillColor: Colors.white),
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.only(top: 10),
+                            width: MediaQuery.of(context).size.width,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text('Save')))
+                      ],
+                    ),
+                  ),
+                ),
+                // ListView(
+                //   padding: EdgeInsets.all(10),
+                //   children: <Widget>[
+                //     TextField(),
+                //     ElevatedButton(onPressed: () {}, child: Text('Save'))
+                //   ],
+                // ),
+                backgroundColor: Colors.amber);
           },
         ),
       ),
