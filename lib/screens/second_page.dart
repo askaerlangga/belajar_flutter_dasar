@@ -1,3 +1,4 @@
+import 'package:belajar_flutter_dasar/routes/route_name.dart';
 import 'package:belajar_flutter_dasar/screens/third_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ class SecondPage extends StatelessWidget {
             ElevatedButton(
               child: Text('Third Page'),
               onPressed: () async {
-                var data = await Get.to(() => ThirdPage());
+                var data = await Get.toNamed(RouteName.thirdPage);
                 print('Result dari ThirdPage : $data');
               },
             ),
