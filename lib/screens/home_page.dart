@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Next Page'),
           onPressed: () {
-            Get.to(() => SecondPage());
+            Get.off(() => SecondPage(), arguments: 'Data dari HomePage');
           },
         ),
       ),
