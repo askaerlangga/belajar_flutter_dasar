@@ -1,5 +1,3 @@
-import 'package:belajar_flutter_dasar/routes/route_name.dart';
-import 'package:belajar_flutter_dasar/screens/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +12,17 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Product List'),
+          child: const Text('Show Snackbar'),
           onPressed: () {
-            Get.offNamed(RouteName.productList);
+            Get.snackbar('Error', 'Tidak ada koneksi',
+                animationDuration: Duration(milliseconds: 500),
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                icon: Icon(
+                  Icons.error,
+                  color: Colors.white,
+                ),
+                snackPosition: SnackPosition.BOTTOM);
           },
         ),
       ),

@@ -1,4 +1,3 @@
-import 'package:belajar_flutter_dasar/routes/page_route.dart';
 import 'package:belajar_flutter_dasar/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,9 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: HomePage(),
-      // HomePage
-      initialRoute: '/',
-      getPages: AppPageRoute.pages,
     );
   }
 }
