@@ -1,4 +1,4 @@
 abstract class RouteName {
-  static const secondPage = '/second';
-  static const thirdPage = '/third';
+  static const productList = '/productlist';
+  static const productDetail = '/productdetail';
 }

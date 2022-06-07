@@ -1,5 +1,5 @@
 import 'package:belajar_flutter_dasar/routes/route_name.dart';
-import 'package:belajar_flutter_dasar/screens/second_page.dart';
+import 'package:belajar_flutter_dasar/screens/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,10 +14,9 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: Text('Next Page'),
+          child: const Text('Product List'),
           onPressed: () {
-            Get.offNamed(RouteName.secondPage, arguments: 'Data dari HomePage');
-            // Get.off(() => SecondPage(), arguments: 'Data dari HomePage');
+            Get.offNamed(RouteName.productList);
           },
         ),
       ),
