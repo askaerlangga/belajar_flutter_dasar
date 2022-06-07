@@ -12,17 +12,19 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Show Snackbar'),
-          onPressed: () {
-            Get.snackbar('Error', 'Tidak ada koneksi',
-                animationDuration: Duration(milliseconds: 500),
-                backgroundColor: Colors.red,
-                colorText: Colors.white,
-                icon: Icon(
-                  Icons.error,
-                  color: Colors.white,
-                ),
-                snackPosition: SnackPosition.BOTTOM);
+          child: const Text('Show Dialog'),
+          onPressed: () async {
+            Get.defaultDialog(
+                // Klik background tidak close
+                barrierDismissible: false,
+                title: 'Error',
+                middleText: 'Tidak ada koneksi internet',
+                // textCancel: 'Cancel',
+                cancel: ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text('Ok')));
           },
         ),
       ),
