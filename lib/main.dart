@@ -1,4 +1,6 @@
-import 'package:belajar_flutter_dasar/screens/home_page.dart';
+import 'package:belajar_flutter_dasar/bindings/count_binding.dart';
+import 'package:belajar_flutter_dasar/pages/home_page.dart';
+import 'package:belajar_flutter_dasar/pages/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: HomePage(),
+      home: const HomePage(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/second',
+          page: () => SecondPage(),
+          binding: CountBinding(),
+        )
+      ],
     );
   }
 }
