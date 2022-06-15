@@ -1,16 +1,15 @@
 import 'package:belajar_flutter_dasar/controllers/auth_controller.dart';
-import 'package:belajar_flutter_dasar/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final emailC = TextEditingController();
   final passwordC = TextEditingController();
   final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(title: Text('Daftar Akun')),
       body: Center(
         child: Container(
           padding: EdgeInsets.all(20),
@@ -39,21 +38,12 @@ class LoginPage extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                       onPressed: () {
-                        authC.login(emailC.text, passwordC.text);
+                        authC.signup(emailC.text, passwordC.text);
                       },
                       child: const Text(
-                        'Login',
+                        'Daftar',
                         style: TextStyle(fontSize: 16),
                       )),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Belum punya akun?'),
-                    TextButton(
-                        onPressed: () => Get.toNamed(RouteName.signup),
-                        child: Text('Daftar'))
-                  ],
                 )
               ]),
         ),
