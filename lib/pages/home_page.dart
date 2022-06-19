@@ -13,7 +13,12 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                authC.logout();
+                Get.defaultDialog(
+                  title: 'Keluar',
+                  middleText: 'Apakah anda yakin ingin keluar?',
+                  onCancel: () => Get.back(),
+                  onConfirm: () => authC.logout(),
+                );
               },
               icon: Icon(Icons.logout))
         ],
