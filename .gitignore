@@ -46,3 +46,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 ios/firebase_app_id_file.json
+android/app/google-services.json
