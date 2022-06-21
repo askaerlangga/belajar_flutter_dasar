@@ -64,4 +64,18 @@ class AuthController extends GetxController {
       print(e);
     }
   }
+
+  void resetPassword(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        alertSnackbar('Penulisan email salah');
+      } else if (e.code == 'user-not-found') {
+        alertSnackbar('Email tidak terdaftar');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }

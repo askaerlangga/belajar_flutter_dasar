@@ -31,10 +31,14 @@ class LoginPage extends StatelessWidget {
                   decoration: const InputDecoration(
                       labelText: 'Password', border: OutlineInputBorder()),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                        onPressed: () {
+                          Get.toNamed(RouteName.forgotPassword);
+                        },
+                        child: Text('Lupa Password?'))),
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   child: ElevatedButton(

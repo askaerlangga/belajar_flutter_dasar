@@ -1,3 +1,4 @@
+import 'package:belajar_flutter_dasar/pages/forgot_password.dart';
 import 'package:belajar_flutter_dasar/pages/home_page.dart';
 import 'package:belajar_flutter_dasar/pages/login_page.dart';
 import 'package:belajar_flutter_dasar/pages/signup_page.dart';
@@ -11,6 +12,7 @@ class AppRoute extends GetxController {
       page: () => HomePage(),
     ),
     GetPage(name: RouteName.login, page: () => LoginPage()),
-    GetPage(name: RouteName.signup, page: () => SignUpPage())
+    GetPage(name: RouteName.signup, page: () => SignUpPage()),
+    GetPage(name: RouteName.forgotPassword, page: () => ForgotPassword())
   ];
 }
