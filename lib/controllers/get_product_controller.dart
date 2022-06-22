@@ -14,7 +14,7 @@ class GetProductController extends GetxController {
   // Get data realtime
   Stream<QuerySnapshot<Object?>> getProductRealTime() {
     CollectionReference products = db.collection('products');
-    return products.snapshots();
+    return products.orderBy('stock', descending: true).snapshots();
   }
 
   void deleteProduct(String? id) {
