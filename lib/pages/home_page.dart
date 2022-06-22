@@ -23,11 +23,6 @@ class HomePage extends StatelessWidget {
           actions: <Widget>[
             IconButton(
                 onPressed: () {
-                  getProductController.getProduct();
-                },
-                icon: Icon(Icons.refresh)),
-            IconButton(
-                onPressed: () {
                   Get.defaultDialog(
                     title: 'Keluar',
                     middleText: 'Apakah anda yakin ingin keluar?',
@@ -38,10 +33,10 @@ class HomePage extends StatelessWidget {
                 icon: Icon(Icons.logout))
           ],
         ),
-        body: FutureBuilder<QuerySnapshot<Object?>>(
-          future: getProductController.getProduct(),
+        body: StreamBuilder<QuerySnapshot<Object?>>(
+          stream: getProductController.getProductRealTime(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.connectionState == ConnectionState.active) {
               var data = snapshot.data!.docs;
               return ListView.builder(
                   itemCount: snapshot.data!.docs.length,

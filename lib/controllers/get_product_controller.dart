@@ -5,11 +5,18 @@ class GetProductController extends GetxController {
   // Initial database
   FirebaseFirestore db = FirebaseFirestore.instance;
 
+  // Get data sekali
   Future<QuerySnapshot<Object?>> getProduct() async {
     CollectionReference products = db.collection('products');
     // products.get().then((value) {
     //   print((value.docs[0].data() as Map<String, dynamic>)['name']);
     // });
     return products.get();
+  }
+
+  // Get data realtime
+  Stream<QuerySnapshot<Object?>> getProductRealTime() {
+    CollectionReference products = db.collection('products');
+    return products.snapshots();
   }
 }
