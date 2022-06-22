@@ -8,9 +8,6 @@ class GetProductController extends GetxController {
   // Get data sekali
   Future<QuerySnapshot<Object?>> getProduct() async {
     CollectionReference products = db.collection('products');
-    // products.get().then((value) {
-    //   print((value.docs[0].data() as Map<String, dynamic>)['name']);
-    // });
     return products.get();
   }
 

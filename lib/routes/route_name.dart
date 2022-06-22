@@ -4,4 +4,5 @@ abstract class RouteName {
   static const signup = '/signup';
   static const forgotPassword = '/forgotPassword';
   static const addProduct = '/addProduct';
+  static const editProduct = '/editProduct';
 }

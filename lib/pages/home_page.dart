@@ -42,6 +42,10 @@ class HomePage extends StatelessWidget {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      onTap: () {
+                        Get.toNamed(RouteName.editProduct,
+                            arguments: data[index].id);
+                      },
                       title: Text(
                           'Produk : ${(data[index].data() as Map<String, dynamic>)['name']}'),
                       subtitle: Text(
