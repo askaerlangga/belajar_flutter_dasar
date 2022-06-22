@@ -50,6 +50,12 @@ class HomePage extends StatelessWidget {
                           'Produk : ${(data[index].data() as Map<String, dynamic>)['name']}'),
                       subtitle: Text(
                           'Stock : ${(data[index].data() as Map<String, dynamic>)['stock']}'),
+                      trailing: IconButton(
+                        onPressed: () {
+                          getProductController.deleteProduct(data[index].id);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
                     );
                   });
             }

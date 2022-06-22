@@ -16,4 +16,10 @@ class GetProductController extends GetxController {
     CollectionReference products = db.collection('products');
     return products.snapshots();
   }
+
+  void deleteProduct(String? id) {
+    DocumentReference products = db.collection('products').doc(id);
+    products.delete();
+    print('Delete');
+  }
 }
